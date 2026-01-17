@@ -1,57 +1,25 @@
-# Sample Hardhat 3 Beta Project (`mocha` and `ethers`)
+# CryptoInvestDAO - Decentralized Investment Platform
 
-This project showcases a Hardhat 3 Beta project using `mocha` for tests and the `ethers` library for Ethereum interactions.
+CryptoInvestDAO is a blockchain-based governance system that allows members to pool resources and vote on investment proposals. The platform uses a customized governance token (CID) to track influence and manage the proposal lifecycle.
 
-To learn more about the Hardhat 3 Beta, please visit the [Getting Started guide](https://hardhat.org/docs/getting-started#getting-started-with-hardhat-3). To share your feedback, join our [Hardhat 3 Beta](https://hardhat.org/hardhat3-beta-telegram-group) Telegram group or [open an issue](https://github.com/NomicFoundation/hardhat/issues/new) in our GitHub issue tracker.
+## 🚀 Core Features & Requirement Mapping
+* **Stake & Influence (#1, #24)**: Users deposit SepoliaETH to receive CID tokens at a 1:1000 ratio.
+* **DAO Metrics (#15, #20)**: Live tracking of Treasury Balance and individual Voting Power.
+* **Governance Delegation (#5)**: Members activate voting weight via self-delegation or delegating to others.
+* **Proposal Creation (#2)**: Members can propose investment transfers with a recipient, amount, and description.
+* **Voting Interface (#4)**: Support for 'For' and 'Against' votes on active proposals.
 
-## Project Overview
+## 🛠 Technical Stack
+* **Smart Contracts**: Solidity (UUPS Upgradeable pattern).
+* **Frontend**: React.js with Tailwind CSS.
+* **Library**: Ethers.js (v6).
+* **Network**: Ethereum Sepolia Testnet.
 
-This example project includes:
+## 📝 Usage Instructions
+1. **Connect**: Link MetaMask to the dashboard (using account `0xC04F...bb43`).
+2. **Stake**: Deposit ETH to mint CID tokens.
+3. **Delegate**: Paste your address in "Delegate Power" and click "Delegate Now" to activate your weight.
+4. **Propose**: After a 1-minute network propagation delay, submit a new investment proposal.
 
-- A simple Hardhat configuration file.
-- Foundry-compatible Solidity unit tests.
-- TypeScript integration tests using `mocha` and ethers.js
-- Examples demonstrating how to connect to different types of networks, including locally simulating OP mainnet.
-
-## Usage
-
-### Running Tests
-
-To run all the tests in the project, execute the following command:
-
-```shell
-npx hardhat test
-```
-
-You can also selectively run the Solidity or `mocha` tests:
-
-```shell
-npx hardhat test solidity
-npx hardhat test mocha
-```
-
-### Make a deployment to Sepolia
-
-This project includes an example Ignition module to deploy the contract. You can deploy this module to a locally simulated chain or to Sepolia.
-
-To run the deployment to a local chain:
-
-```shell
-npx hardhat ignition deploy ignition/modules/Counter.ts
-```
-
-To run the deployment to Sepolia, you need an account with funds to send the transaction. The provided Hardhat configuration includes a Configuration Variable called `SEPOLIA_PRIVATE_KEY`, which you can use to set the private key of the account you want to use.
-
-You can set the `SEPOLIA_PRIVATE_KEY` variable using the `hardhat-keystore` plugin or by setting it as an environment variable.
-
-To set the `SEPOLIA_PRIVATE_KEY` config variable using `hardhat-keystore`:
-
-```shell
-npx hardhat keystore set SEPOLIA_PRIVATE_KEY
-```
-
-After setting the variable, you can run the deployment with the Sepolia network:
-
-```shell
-npx hardhat ignition deploy --network sepolia ignition/modules/Counter.ts
-```
+## ⚠️ Important Note on Network Latency
+The Sepolia network requires approximately 60-120 seconds to finalize delegation snapshots. Proposal creation will only succeed once the network confirms the governance weight update.s
